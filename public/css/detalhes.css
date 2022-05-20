@@ -1,18 +1,389 @@
-/* Error: Undefined mixin.
- *    ,
- * 95 | @include componentizacao
- *    | ^^^^^^^^^^^^^^^^^^^^^^^^
- *    '
- *   public\sass\components\_main-detalhes.scss 95:1  @import
- *   public\sass\detalhes.scss 4:9                    root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Undefined mixin.\a    \2577 \a 95 \2502  @include componentizacao\a    \2502  ^^^^^^^^^^^^^^^^^^^^^^^^\a    \2575 \a   public\\sass\\components\\_main-detalhes.scss 95:1  @import\a   public\\sass\\detalhes.scss 4:9                    root stylesheet";
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, a,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Inter", sans-serif;
+  color: #212B36;
+}
+
+body {
+  width: 100%;
+}
+
+header {
+  padding: 1.25rem 0;
+}
+header .cabecalho {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  width: 75vw;
+  padding: 1.25rem 0;
+  margin: 0 auto;
+}
+header .cabecalho__responsivo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 75vw;
+}
+
+.navMenu {
+  grid-column: span 2;
+}
+
+.cabecalho__marca {
+  width: 25vw;
+}
+.cabecalho__marca__titulo {
+  font-size: 3rem;
+}
+.cabecalho__marca__paragrafo {
+  margin-left: 16.2rem;
+}
+
+.cabecalho__carrinho {
+  justify-self: flex-end;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  background: #EFF2F7;
+  border: 1px solid #f0f0f0;
+  height: 6vh;
+  margin: 1.25rem 0;
+}
+.menu__link {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 75vw;
+}
+.menu__link__item {
+  cursor: pointer;
+  color: #212B36;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.menu__link__item:hover {
+  text-shadow: 0.1em 0.1em 0.2em #a5a5a5;
+}
+
+.busca {
+  display: flex;
+  width: 75vw;
+  margin: 1.25rem auto;
+}
+.busca__input {
+  width: 100%;
+  margin-right: 1%;
+}
+.busca__botao {
+  background: #487680;
+  border: none;
+  width: 5vh;
+  height: 4vh;
+}
+.busca__botao:hover {
+  background: #6eb4c4;
+}
+.busca__botao:active {
+  border: 1px solid #c5c5c5;
+}
+.busca__botao__lupa {
+  width: 90%;
+  height: 1.875rem;
+}
+
+.principal {
+  width: 100%;
+  font-size: 1.5rem;
+}
+.principal .detalhes {
+  display: grid;
+  margin: 5rem auto;
+  grid-template-columns: 1fr 1fr;
+  width: 75vw;
+}
+.principal .detalhes__imagem {
+  grid-row: span 4;
+  justify-self: center;
+}
+.principal .detalhes__info__titulo {
+  font-size: 1.7rem;
+  font-weight: bold;
+  margin-bottom: 1.25rem;
+}
+.principal .detalhes__imagens {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.principal .detalhes__imagens img {
+  width: 108px;
+  height: 108px;
+}
+.principal .detalhes__imagem__tamanho {
+  align-self: flex-end;
+}
+.principal .detalhes__imagem__tamanho input[type=radio] {
+  display: none;
+}
+.principal .detalhes__imagem__tamanho input[type=radio]:checked + button {
+  background-color: #487680;
+  color: white;
+  font-weight: bold;
+}
+.principal .detalhes__imagem__tamanho__botao {
+  font-size: 1.5rem;
+  margin: 0 0.576rem 0.313rem 0;
+  padding: 0.313rem 0.576rem;
+  border: 1px solid #bbb;
+}
+.principal .detalhes .detalhes__sacola {
+  margin-top: 1.25rem;
+  width: 200px;
+  height: 10vh;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #487680;
+  color: #EFF2F7;
+  border: none;
+  border-radius: 5px;
+}
+.principal .detalhes .detalhes__sacola__vazio {
+  width: 24px;
+  height: 24px;
+}
+@media only screen and (max-device-width: 1200px) {
+  .principal .detalhes {
+    gap: 1.25rem;
+  }
+  .principal .detalhes__imagem {
+    grid-column: span 2;
+    justify-self: center;
+  }
+  .principal .detalhes__info {
+    grid-row: 6;
+    grid-column: span 2;
+  }
+  .principal .detalhes__imagens {
+    gap: 0 2rem;
+    grid-row: 5;
+    grid-column: span 2;
+    justify-self: center;
+  }
+  .principal .detalhes__imagem__tamanho {
+    grid-column: span 2;
+  }
+}
+
+.manual {
+  width: 75vw;
+  height: 20vh;
+  margin: 5rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  background: #EFF2F7;
+}
+.manual__paragrafo {
+  padding: 1rem 0;
+}
+.manual__paragrafo__junto {
+  letter-spacing: -0.109rem;
+}
+.manual__paragrafo__espacado {
+  letter-spacing: 0.516rem;
+}
+.manual__marca {
+  align-self: flex-end;
+  text-align: right;
+  padding-right: 0.188rem;
+}
+.manual__marca__titulo {
+  font-size: 3rem;
+}
+.manual__marca__paragrafo {
+  font-size: 1rem;
+  padding-bottom: 0.188rem;
+}
+
+.vestuario {
+  width: 75vw;
+  margin: 5rem auto;
+}
+.vestuario h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.25rem;
+}
+.vestuario__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1.875rem;
+}
+@media only screen and (max-device-width: 992px) {
+  .vestuario__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media only screen and (max-device-width: 576px) {
+  .vestuario__grid {
+    grid-template-columns: 1fr;
+  }
+}
+.vestuario__grid .produto {
+  width: 100%;
+  border: 1px solid #c5c5c5;
+  display: flex;
+  flex-direction: column;
+}
+.vestuario__grid .produto__imagem {
+  width: 100%;
+}
+.vestuario__grid .produto__imagem__descricao, .vestuario__grid .produto__imagem__preco {
+  padding-top: 1rem;
+}
+.vestuario__grid .produto__imagem__preco {
+  color: #888;
+  font-weight: bolder;
+}
+.vestuario__grid .produto__imagem__tamanho {
+  padding: 1.25rem 0.5rem;
+  align-self: flex-end;
+}
+.vestuario__grid .produto__imagem__tamanho input[type=radio] {
+  display: none;
+}
+.vestuario__grid .produto__imagem__tamanho input[type=radio]:checked + button {
+  background-color: #487680;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.vestuario__grid .produto__botao {
+  font-size: 1.5rem;
+  margin: 0 0.576rem 0.313rem 0;
+  padding: 0.313rem 0.576rem;
+  border: 1px solid #bbb;
+}
+.vestuario__grid .botao__sacola {
+  margin-top: 1.25rem;
+  width: 100%;
+  height: 5vh;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #487680;
+  color: #EFF2F7;
+  border: none;
+  border-radius: 5px;
+}
+.vestuario__grid .botao__sacola__vazio {
+  width: 24px;
+  height: 24px;
+}
+
+.rodape {
+  width: 100%;
+  background: #EFF2F7;
+  margin-top: 1.25rem;
+}
+.rodape__box {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 1.25rem;
+  width: 75vw;
+  margin: auto;
+  padding-top: 1rem;
+  font-size: 1.5rem;
+}
+.rodape__marca {
+  grid-column: span 4;
+  padding-bottom: 1.5rem;
+}
+.rodape__marca__titulo {
+  font-size: 3rem;
+}
+.rodape__marca__paragrafo {
+  font-size: 1rem;
+  margin-left: 16.2rem;
+}
+.rodape__menu__item {
+  text-decoration: none;
+  color: #487680;
+  line-height: 3rem;
+}
+.rodape__subtitulo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+
+.redes-sociais__icones__item {
+  padding-right: 1.2rem;
+  max-width: 24px;
+  max-height: 24px;
+}
+
+.contato {
+  line-height: 2rem;
+}
+
+/*# sourceMappingURL=detalhes.css.map */
