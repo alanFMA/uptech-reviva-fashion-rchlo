@@ -93,7 +93,7 @@ const produtos = [
   {
     nome: 'Camisa Polo Masculina Básica Cinza',
     url: 'camiseta-lipp',
-    preco: 109.99,
+    preco: 84.99,
     descricao: 'Camisa polo básica para qualquer situação',
     tamanhos_disponiveis: ['P', 'M', 'G'],
     quantidade_disponivel: 12,
@@ -124,3 +124,8 @@ const produtos = [
     ],
   },
 ]
+
+const loadPage = () => {
+  localStorage.setItem("uptech-reviva#produtos", JSON.stringify(produtos))
+  console.log(localStorage)
+}
