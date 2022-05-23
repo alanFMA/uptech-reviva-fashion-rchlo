@@ -275,4 +275,90 @@ header .cabecalho__responsivo {
   line-height: 2rem;
 }
 
+@media only screen and (max-device-width: 992px) {
+  .rodape__box {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0 5rem;
+    justify-content: space-between;
+  }
+
+  .rodape__marca {
+    grid-column: span 3;
+    padding-bottom: 1.25rem;
+  }
+
+  .newsletter {
+    grid-column: span 3;
+    justify-self: flex-end;
+    padding-bottom: 1rem;
+  }
+}
+@media only screen and (max-device-width: 768px) {
+  .rodape__box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 5rem;
+    justify-content: space-between;
+  }
+
+  .rodape__marca {
+    grid-column: span 2;
+    padding-bottom: 1.25rem;
+  }
+
+  .newsletter {
+    grid-column: span 2;
+    justify-self: flex-end;
+    padding-bottom: 1rem;
+  }
+}
+@media only screen and (max-device-width: 576px) {
+  .rodape {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0 5rem;
+  }
+
+  .rodape__marca__titulo {
+    font-size: 1.5rem;
+  }
+
+  .rodape__marca__paragrafo {
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-left: 6.7rem;
+  }
+
+  .rodape__subtitulo {
+    text-align: center;
+  }
+
+  .rodape__menu {
+    grid-column: span 2;
+    text-align: center;
+    padding-bottom: 3rem;
+  }
+
+  .redes-sociais {
+    grid-column: span 2;
+    text-align: center;
+    padding-bottom: 3rem;
+  }
+
+  .contato {
+    grid-column: span 2;
+    text-align: center;
+    padding-bottom: 3rem;
+  }
+
+  .newsletter {
+    width: 100%;
+  }
+
+  .newsletter input {
+    width: 65%;
+  }
+}
+
 /*# sourceMappingURL=carrinho.css.map */
