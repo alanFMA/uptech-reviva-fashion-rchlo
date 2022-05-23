@@ -181,12 +181,14 @@ h2 {
 }
 
 .produto {
+  width: 100%;
   border: 1px solid #c5c5c5;
   display: flex;
   flex-direction: column;
 }
+
 .produto__imagem {
-  width: 90%;
+  width: 100%;
   object-fit: cover;
   padding: 1.25rem 0;
   align-self: center;
@@ -226,7 +228,58 @@ h2 {
   font-weight: bolder;
 }
 
-.botao__sacola {
+.container__botao {
+  margin-top: 1rem;
+  width: 100%;
+  height: 5vh;
+  float: left;
+  perspective: 500px;
+}
+
+.botao__flip {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+.container__botao:hover .botao__flip {
+  transform: rotateY( 180deg ) ;
+  transition: transform 0.5s;
+}
+
+.botao__flip__sacola,
+.botao__flip__checked {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: white;
+  text-align: center;
+  border-radius: 5px;
+  backface-visibility: hidden;
+}
+
+
+.botao__flip__checked {
+  background: #EFF2F7;
+  color: white;
+  transform: rotateY( 180deg );
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #bbb;
+}
+
+.botao__flip__checked:active {
+  background: #e0e0e0;
+}
+
+.botao__flip__sacola {
+  position: absolute;
   width: 100%;
   height: 5vh;
   text-align: center;
@@ -234,7 +287,7 @@ h2 {
   justify-content: space-between;
   align-items: center;
   background: #487680;
-  color: #EFF2F7;
+  color: white;
   border: none;
   border-radius: 5px;
 }
