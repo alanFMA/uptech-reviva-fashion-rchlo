@@ -63,7 +63,7 @@ const produtosInitial = [
   },
   {
     id: 3,
-    nome: "Vestido Curto Feminino Evasê",
+    nome: "Vestido Curto Feminino Evasê Recorte Floral Natural",
     url: "camiseta-lipp",
     preco: 109.99,
     descricao: "Vestido floral para sintonizar com a natureza",
