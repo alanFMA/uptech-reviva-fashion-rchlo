@@ -134,28 +134,3 @@ const loadPage = () => {
 };
 
 document.addEventListener("DOMContentLoaded", loadPage);
-
-const produtos = document.querySelectorAll(".container__botao");
-
-const subtraiItem = function() {
-  const produtosTemp = JSON.parse(localStorage.getItem("uptech-reviva#produtos"));
-  
-  const id = this.getAttribute("productId");
-
-  const produto = produtosTemp.find((produto) => {
-    return produto.id == id
-  })
-
-  if (produto.quantidade_disponivel > 0) {
-    produto.quantidade_disponivel--;
-    localStorage.setItem("uptech-reviva#produtos",JSON.stringify(produtosTemp));
-  } else {
-    alert("Produto sem estoque")
-  }
-  
-  console.log(produtosTemp)
-};
-
-for (let i = 0; i < produtos.length; i++) {
-  produtos[i].addEventListener("click", subtraiItem, false);
-}
