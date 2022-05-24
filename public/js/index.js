@@ -1,3 +1,18 @@
+console.log("carreguei index")
+
+const carrinho = [];
+
+const loadCarrinho = () => {
+  const carrinhoTemp = localStorage.getItem("uptech-reviva#carrinho")
+
+  if(!carrinhoTemp) {
+    localStorage.setItem("uptech-reviva#carrinho", JSON.stringify(carrinho));
+  }
+};
+
+
+document.addEventListener("DOMContentLoaded", loadCarrinho);
+
 const createFieldset = (indice) => {
   const labelP = document.createElement("label");
   labelP.setAttribute("for", `p${indice}`)
@@ -54,7 +69,6 @@ const createFieldset = (indice) => {
 }
 
 const createContainerBotao = (id) => {
-  console.log(id)
   const botaoSacolaVazio1 = document.createElement("div")
   botaoSacolaVazio1.classList.add("botao__sacola__vazio")
   
@@ -147,28 +161,60 @@ const vestuario = document.querySelector("#ultimos-lancamentos");
 })
 
 
+
 const produtos = document.querySelectorAll(".container__botao");
 
-const subtraiItem = function() {
-  const produtosTemp = JSON.parse(localStorage.getItem("uptech-reviva#produtos"));
+const addCarrinho = function () {
+  const produtosTemp = JSON.parse(
+    localStorage.getItem("uptech-reviva#produtos")
+  );
+  const carrinhoTemp = JSON.parse(
+    localStorage.getItem("uptech-reviva#carrinho")
+  );
+
   const id = this.getAttribute("productId");
 
   const produto = produtosTemp.find((produto) => {
-    return produto.id == id
-  })
+    return produto.id == id;
+  });
 
   if (produto.quantidade_disponivel > 0) {
+    const produtoCarrinho = carrinhoTemp.find((produto) => {
+      return produto.id == id;
+    });
+
+    if (produtoCarrinho) {
+      produtoCarrinho.quantidade++;
+    } else {
+      const produtoParaAdicionar = {
+        id: produto.id,
+        nome: produto.nome,
+        preco: produto.preco,
+        quantidade: 1,
+        imagem: produto.imagens
+      };
+      carrinhoTemp.push(produtoParaAdicionar);
+    }
+    localStorage.setItem(
+      "uptech-reviva#carrinho",
+      JSON.stringify(carrinhoTemp)
+    );
+    console.table(carrinhoTemp);
+
+    //Remover do estoque
     produto.quantidade_disponivel--;
-    localStorage.setItem("uptech-reviva#produtos",JSON.stringify(produtosTemp));
+    localStorage.setItem(
+      "uptech-reviva#produtos",
+      JSON.stringify(produtosTemp)
+    );
   } else {
-    alert("Produto sem estoque")
+    alert("Produto sem estoque");
   }
-  
-  console.log(produtosTemp)
+
+
+  console.table(produtosTemp);
 };
 
 for (let i = 0; i < produtos.length; i++) {
-  produtos[i].addEventListener("click", subtraiItem, false);
-  console.log(produtos[i])
+  produtos[i].addEventListener("click", addCarrinho, false);
 }
-

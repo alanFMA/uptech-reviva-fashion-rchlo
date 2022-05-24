@@ -126,11 +126,16 @@ const produtosInitial = [
 ];
 
 const loadPage = () => {
-  localStorage.setItem(
-    "uptech-reviva#produtos",
-    JSON.stringify(produtosInitial)
-  );
-  console.log("carreguei");
+  const estoqueTemp = localStorage.getItem("uptech-reviva#produtos")
+
+  if (!estoqueTemp) {
+    localStorage.setItem(
+      "uptech-reviva#produtos",
+       JSON.stringify(produtosInitial)
+     );
+  }
+
+  console.log("carreguei estoque");
 };
 
 document.addEventListener("DOMContentLoaded", loadPage);
