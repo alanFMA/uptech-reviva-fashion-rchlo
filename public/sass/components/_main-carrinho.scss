@@ -35,6 +35,9 @@
         height: 160px;
         border: 1px solid $cor-secundaria;
         text-align: center;
+        & img {
+          width: 100%;
+        }
       }
       &__tamanho {
         &__select {

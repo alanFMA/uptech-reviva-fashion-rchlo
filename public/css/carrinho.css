@@ -183,6 +183,9 @@ header .cabecalho__responsivo {
   border: 1px solid #EFF2F7;
   text-align: center;
 }
+.principal .carrinho__grid__imagem img {
+  width: 100%;
+}
 .principal .carrinho__grid__tamanho__select {
   display: flex;
   flex-direction: row;
