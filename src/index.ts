@@ -128,7 +128,6 @@ const createContainerBotao = (id: number):HTMLDivElement => {
 }
 
 const vestuario: Element = document.querySelector("#ultimos-lancamentos") as Element;
-
   produtosInitial.forEach((produto: IProduto, indice: number):void => {
   const imagemProduto = document.createElement("img");
   imagemProduto.setAttribute("src", produto.imagens[0].url)
