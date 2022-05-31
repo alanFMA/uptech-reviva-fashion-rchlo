@@ -10,6 +10,7 @@ const loadCarrinho = () => {
   }
 };
 
+// Pagina Inicial Dinâmica
 
 document.addEventListener("DOMContentLoaded", loadCarrinho);
 
@@ -160,7 +161,7 @@ const vestuario = document.querySelector("#ultimos-lancamentos");
   vestuario.appendChild(vestuarioGridItem)
 })
 
-
+// Adicionando ao carrinho
 
 const produtos = document.querySelectorAll(".container__botao");
 
