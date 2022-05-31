@@ -1,6 +1,6 @@
 console.log("carreguei index")
 
-const carrinho = [];
+const carrinho: any[] = [];
 
 const loadCarrinho = () => {
   const carrinhoTemp = localStorage.getItem("uptech-reviva#carrinho")
@@ -14,7 +14,7 @@ const loadCarrinho = () => {
 
 document.addEventListener("DOMContentLoaded", loadCarrinho);
 
-const createFieldset = (indice) => {
+const createFieldset = (indice: number) => {
   const labelP = document.createElement("label");
   labelP.setAttribute("for", `p${indice}`)
   labelP.innerHTML = "P";
@@ -69,7 +69,7 @@ const createFieldset = (indice) => {
   return fieldset;
 }
 
-const createContainerBotao = (id) => {
+const createContainerBotao = (id: number) => {
   const botaoSacolaVazio1 = document.createElement("div")
   botaoSacolaVazio1.classList.add("botao__sacola__vazio")
   
@@ -111,7 +111,7 @@ const createContainerBotao = (id) => {
   botaoFlip.appendChild(botaoFlipChecked)
 
   const containerBotao = document.createElement("div")
-  containerBotao.setAttribute("productId", id)
+  containerBotao.setAttribute("productId", `${id}`) 
   containerBotao.classList.add("container__botao")
 
   containerBotao.appendChild(botaoFlip)
@@ -119,7 +119,7 @@ const createContainerBotao = (id) => {
   return containerBotao;
 }
 
-const vestuario = document.querySelector("#ultimos-lancamentos");
+const vestuario: Element = document.querySelector("#ultimos-lancamentos") as Element;
 
   produtosInitial.forEach((produto, indice)=> {
   const imagemProduto = document.createElement("img");
@@ -165,22 +165,22 @@ const vestuario = document.querySelector("#ultimos-lancamentos");
 
 const produtos = document.querySelectorAll(".container__botao");
 
-const addCarrinho = function () {
+const addCarrinho = function (this: any) {
   const produtosTemp = JSON.parse(
-    localStorage.getItem("uptech-reviva#produtos")
+    localStorage.getItem("uptech-reviva#produtos") as string
   );
   const carrinhoTemp = JSON.parse(
-    localStorage.getItem("uptech-reviva#carrinho")
+    localStorage.getItem("uptech-reviva#carrinho") as string
   );
 
   const id = this.getAttribute("productId");
 
-  const produto = produtosTemp.find((produto) => {
+  const produto = produtosTemp.find((produto: any) => {
     return produto.id == id;
   });
 
   if (produto.quantidade_disponivel > 0) {
-    const produtoCarrinho = carrinhoTemp.find((produto) => {
+    const produtoCarrinho = carrinhoTemp.find((produto: any) => {
       return produto.id == id;
     });
 

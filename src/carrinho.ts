@@ -1,14 +1,14 @@
 const LoadCarrinhoPage = () => {
-  const carrinhoAtual = JSON.parse(localStorage.getItem("uptech-reviva#carrinho"));
+  const carrinhoAtual = JSON.parse(localStorage.getItem("uptech-reviva#carrinho") as string);
   console.log("carreguei carrinho")
    
   if (!carrinhoAtual) {
     alert("Você ainda não adicionou produto no carrinho")
   } else {
 
-  const carrinhoPagina = document.querySelector(".carrinho")
+  const carrinhoPagina = document.querySelector(".carrinho") as Element;
 
-  carrinhoAtual.forEach(produto => {
+  carrinhoAtual.forEach((produto: any) => {
 
   const imagemProduto = document.createElement("img")
   imagemProduto.setAttribute("src", produto.imagem[0].url)
