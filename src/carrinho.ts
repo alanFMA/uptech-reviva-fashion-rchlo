@@ -1,6 +1,19 @@
+const calculaTotal = (precos: number[]): number => {
+  return precos.reduce((acc: number, valor: number) => acc + valor)
+}
+
+const calculaTotalCarrinho = (carrinhoProduto: ICarrinhoProduto[]) => {
+  const precos: number[] = carrinhoProduto.map((produto: ICarrinhoProduto): number => {
+    return produto.preco;
+  })
+  const total = calculaTotal(precos);
+  console.log(total)
+}
+
 const LoadCarrinhoPage = () => {
-  const carrinhoAtual = JSON.parse(localStorage.getItem("uptech-reviva#carrinho") as string);
-  console.log("carreguei carrinho")
+  const carrinhoAtual = JSON.parse(localStorage.getItem("Carrinho") as string);
+  console.log("carreguei carrinho");
+  calculaTotalCarrinho(carrinhoAtual)
    
   if (!carrinhoAtual) {
     alert("Você ainda não adicionou produto no carrinho")
@@ -31,4 +44,8 @@ const LoadCarrinhoPage = () => {
 }
 
 document.addEventListener("DOMContentLoaded", LoadCarrinhoPage)
+
+
+
+
 

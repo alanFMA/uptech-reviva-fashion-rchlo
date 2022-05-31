@@ -1,12 +1,20 @@
 console.log("carreguei index")
 
-const carrinho: any[] = [];
+interface ICarrinhoProduto {
+  id: number;
+  nome: string;
+  preco: number;
+  quantidade: number;
+  imagem: IProdutoImagem[];
+}
 
-const loadCarrinho = () => {
-  const carrinhoTemp = localStorage.getItem("uptech-reviva#carrinho")
+const carrinho: ICarrinhoProduto[] = [];
+
+const loadCarrinho = ():void => {
+  const carrinhoTemp = localStorage.getItem("Carrinho")
 
   if(!carrinhoTemp) {
-    localStorage.setItem("uptech-reviva#carrinho", JSON.stringify(carrinho));
+    localStorage.setItem("Carrinho", JSON.stringify(carrinho));
   }
 };
 
@@ -14,7 +22,7 @@ const loadCarrinho = () => {
 
 document.addEventListener("DOMContentLoaded", loadCarrinho);
 
-const createFieldset = (indice: number) => {
+const createFieldset = (indice: number):HTMLFieldSetElement => {
   const labelP = document.createElement("label");
   labelP.setAttribute("for", `p${indice}`)
   labelP.innerHTML = "P";
@@ -69,7 +77,7 @@ const createFieldset = (indice: number) => {
   return fieldset;
 }
 
-const createContainerBotao = (id: number) => {
+const createContainerBotao = (id: number):HTMLDivElement => {
   const botaoSacolaVazio1 = document.createElement("div")
   botaoSacolaVazio1.classList.add("botao__sacola__vazio")
   
@@ -121,7 +129,7 @@ const createContainerBotao = (id: number) => {
 
 const vestuario: Element = document.querySelector("#ultimos-lancamentos") as Element;
 
-  produtosInitial.forEach((produto, indice)=> {
+  produtosInitial.forEach((produto: IProduto, indice: number):void => {
   const imagemProduto = document.createElement("img");
   imagemProduto.setAttribute("src", produto.imagens[0].url)
   imagemProduto.classList.add("produto__imagem")
@@ -165,29 +173,29 @@ const vestuario: Element = document.querySelector("#ultimos-lancamentos") as Ele
 
 const produtos = document.querySelectorAll(".container__botao");
 
-const addCarrinho = function (this: any) {
+const addCarrinho = function (this: Element) {
   const produtosTemp = JSON.parse(
-    localStorage.getItem("uptech-reviva#produtos") as string
-  );
+    localStorage.getItem("Produtos") as string
+  ) as IProduto[];
   const carrinhoTemp = JSON.parse(
-    localStorage.getItem("uptech-reviva#carrinho") as string
-  );
+    localStorage.getItem("Carrinho") as string
+  ) as ICarrinhoProduto[];
 
-  const id = this.getAttribute("productId");
+  const id = parseInt(this.getAttribute("productId") as string);
 
-  const produto = produtosTemp.find((produto: any) => {
-    return produto.id == id;
+  const produto = produtosTemp.find((produto: IProduto):Boolean => {
+    return produto.id === id;
   });
 
-  if (produto.quantidade_disponivel > 0) {
-    const produtoCarrinho = carrinhoTemp.find((produto: any) => {
-      return produto.id == id;
+  if (produto && produto.quantidade_disponivel > 0) {
+    const produtoCarrinho = carrinhoTemp.find((produto: ICarrinhoProduto) => {
+      return produto.id === id;
     });
 
     if (produtoCarrinho) {
       produtoCarrinho.quantidade++;
     } else {
-      const produtoParaAdicionar = {
+      const produtoParaAdicionar: ICarrinhoProduto = {
         id: produto.id,
         nome: produto.nome,
         preco: produto.preco,
@@ -197,7 +205,7 @@ const addCarrinho = function (this: any) {
       carrinhoTemp.push(produtoParaAdicionar);
     }
     localStorage.setItem(
-      "uptech-reviva#carrinho",
+      "Carrinho",
       JSON.stringify(carrinhoTemp)
     );
     console.table(carrinhoTemp);
@@ -205,7 +213,7 @@ const addCarrinho = function (this: any) {
     //Remover do estoque
     produto.quantidade_disponivel--;
     localStorage.setItem(
-      "uptech-reviva#produtos",
+      "Produtos",
       JSON.stringify(produtosTemp)
     );
   } else {

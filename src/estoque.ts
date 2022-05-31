@@ -1,4 +1,20 @@
-const produtosInitial = [
+interface IProdutoImagem {
+  url: string;
+  descricao: string;
+}
+
+interface IProduto {
+  id: number;
+  nome: string;
+  url: string;
+  preco: number;
+  descricao: string;
+  tamanhos_disponiveis: string[] //Array<string>
+  quantidade_disponivel: number;
+  imagens: IProdutoImagem[];
+}
+
+const produtosInitial: IProduto[] = [
   {
     id: 1,
     nome: "Calça Black Jeans Feminina Skinny Preto Pool",
@@ -125,12 +141,12 @@ const produtosInitial = [
   },
 ];
 
-const loadPage = () => {
-  const estoqueTemp = localStorage.getItem("uptech-reviva#produtos")
+const loadPage = ():void => {
+  const estoqueTemp = localStorage.getItem("Produtos")
 
   if (!estoqueTemp) {
     localStorage.setItem(
-      "uptech-reviva#produtos",
+      "Produtos",
        JSON.stringify(produtosInitial)
      );
   }
